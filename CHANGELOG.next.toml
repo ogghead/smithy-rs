@@ -58,3 +58,9 @@ message = "SDK crates now set the `rust-version` property in their Cargo.toml fi
 references = ["smithy-rs#3601"]
 meta = { "breaking" = false, "tada" = true, "bug" = false }
 author = "jdisanti"
+
+[[smithy-rs]]
+message = "Added support for BigInt and BigDecimal to Smithy model generation."
+references = ["smithy-rs#312"]
+meta = { "breaking" = false, "tada" = true, "bug" = false }
+author = "ogghead"
