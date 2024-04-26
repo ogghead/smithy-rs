@@ -267,6 +267,8 @@ data class CargoDependency(
         val TokioStream: CargoDependency = CargoDependency("tokio-stream", CratesIo("0.1.7"))
         val Tower: CargoDependency = CargoDependency("tower", CratesIo("0.4"))
         val Tracing: CargoDependency = CargoDependency("tracing", CratesIo("0.1"))
+        val NumBigInt: CargoDependency = CargoDependency("num-bigint", CratesIo("0.4.4"))
+        val NumRational: CargoDependency = CargoDependency("num-rational", CratesIo("0.4.1"))
 
         // Test-only dependencies
         val Approx: CargoDependency = CargoDependency("approx", CratesIo("0.5.1"), DependencyScope.Dev)

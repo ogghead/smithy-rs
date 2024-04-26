@@ -276,4 +276,46 @@ class SymbolVisitorTest {
         symbol.definitionFile shouldBe "src/test_operation.rs"
         symbol.name shouldBe "PutObject"
     }
+
+    @Test
+    fun `create big integer`() {
+        val memberBuilder = MemberShape.builder().id("foo.bar#MyStruct\$someField").target("smithy.api#BigInteger")
+        val member = memberBuilder.build()
+        val struct =
+            StructureShape.builder()
+                .id("foo.bar#MyStruct")
+                .addMember(member)
+                .build()
+        val model =
+            Model.assembler()
+                .addShapes(struct, member)
+                .assemble()
+                .unwrap()
+        val provider: SymbolProvider = testSymbolProvider(model)
+        val sym = provider.toSymbol(member)
+        sym.rustType().render(false) shouldBe "Option<BigInt>"
+        sym.referenceClosure().map { it.name } shouldContain "BigInt"
+        sym.references[0].dependencies.shouldNotBeEmpty()
+    }
+
+    @Test
+    fun `create big rational`() {
+        val memberBuilder = MemberShape.builder().id("foo.bar#MyStruct\$someField").target("smithy.api#BigDecimal")
+        val member = memberBuilder.build()
+        val struct =
+            StructureShape.builder()
+                .id("foo.bar#MyStruct")
+                .addMember(member)
+                .build()
+        val model =
+            Model.assembler()
+                .addShapes(struct, member)
+                .assemble()
+                .unwrap()
+        val provider: SymbolProvider = testSymbolProvider(model)
+        val sym = provider.toSymbol(member)
+        sym.rustType().render(false) shouldBe "Option<BigRational>"
+        sym.referenceClosure().map { it.name } shouldContain "BigRational"
+        sym.references[0].dependencies.shouldNotBeEmpty()
+    }
 }

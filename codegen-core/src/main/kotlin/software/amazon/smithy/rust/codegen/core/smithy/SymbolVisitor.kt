@@ -42,6 +42,8 @@ import software.amazon.smithy.model.traits.DefaultTrait
 import software.amazon.smithy.model.traits.EnumTrait
 import software.amazon.smithy.model.traits.ErrorTrait
 import software.amazon.smithy.rust.codegen.core.rustlang.Attribute
+import software.amazon.smithy.rust.codegen.core.rustlang.CargoDependency.Companion.NumBigInt
+import software.amazon.smithy.rust.codegen.core.rustlang.CargoDependency.Companion.NumRational
 import software.amazon.smithy.rust.codegen.core.rustlang.RustModule
 import software.amazon.smithy.rust.codegen.core.rustlang.RustReservedWords
 import software.amazon.smithy.rust.codegen.core.rustlang.RustType
@@ -245,11 +247,15 @@ open class SymbolVisitor(
     }
 
     override fun bigIntegerShape(shape: BigIntegerShape?): Symbol {
-        TODO("Not yet implemented: https://github.com/smithy-lang/smithy-rs/issues/312")
+        return symbolBuilder(shape, RustType.Opaque(name = "BigInt", namespace = "num_bigint"))
+            .addDependency(NumBigInt)
+            .build()
     }
 
     override fun bigDecimalShape(shape: BigDecimalShape?): Symbol {
-        TODO("Not yet implemented: https://github.com/smithy-lang/smithy-rs/issues/312")
+        return symbolBuilder(shape, RustType.Opaque(name = "BigRational", namespace = "num_rational"))
+            .addDependency(NumRational)
+            .build()
     }
 
     override fun operationShape(shape: OperationShape): Symbol {
