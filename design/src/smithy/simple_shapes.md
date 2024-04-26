@@ -25,7 +25,6 @@ pub struct BigDecimal(String);
 
 This will enable us to add helpers over time as requested. Users will also be able to define their own conversions into their preferred large-number libraries.
 
-As of 5/23/2021 BigInteger / BigDecimal are not included in AWS models. Implementation is tracked [here](https://github.com/smithy-lang/smithy-rs/issues/312).
 ### Timestamps
 [chrono](https://github.com/chronotope/chrono) is the current de facto library for datetime in Rust, but it is pre-1.0. DateTimes are represented by an SDK defined structure modeled on `std::time::Duration` from the Rust standard library.
 
