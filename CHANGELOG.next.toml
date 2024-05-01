@@ -92,7 +92,7 @@ meta = { "breaking" = false, "tada" = false, "bug" = false }
 author = "jdisanti"
 
 [[smithy-rs]]
-message = "Added support for BigInt and BigDecimal to Smithy model generation."
-references = ["smithy-rs#312"]
-meta = { "breaking" = false, "tada" = true, "bug" = false }
-author = "ogghead"
+message = "Implement Debug for DateTime"
+references = ["smithy-rs#3161"]
+meta = { "breaking" = false, "tada" = false, "bug" = false, "target" = "all" }
+author = "mnissenb"
