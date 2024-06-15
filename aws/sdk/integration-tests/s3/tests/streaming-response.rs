@@ -18,7 +18,6 @@ use std::net::SocketAddr;
 use std::time::Duration;
 use tracing::debug;
 
-// TODO(https://github.com/smithy-lang/smithy-rs/issues/3523): Unignore this test
 #[tokio::test]
 #[ignore]
 async fn test_too_short_body_causes_an_error() {

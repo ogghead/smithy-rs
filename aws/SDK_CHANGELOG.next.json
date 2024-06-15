@@ -153,9 +153,9 @@
         "breaking": false,
         "tada": false
       },
-      "author": "jdisanti",
+      "author": "landonxjames",
       "references": [
-        "smithy-rs#3485"
+        "aws-sdk-rust#1143"
       ],
       "since-commit": "129b85d3187d61dbe4bac2a105ebc3411516a271",
       "age": 3

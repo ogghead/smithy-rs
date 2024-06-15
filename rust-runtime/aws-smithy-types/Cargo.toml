@@ -67,6 +67,7 @@ tokio = { version = "1.23.1", features = [
     "fs",
     "io-util",
 ] }
+# This is used in a doctest, don't listen to udeps.
 tokio-stream = "0.1.5"
 tempfile = "3.2.0"
 
